@@ -11,4 +11,10 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
-echo "Dotfiles installation complete!"
+# Change default shell to zsh
+if [ "$SHELL" != "/bin/zsh" ] && [ "$SHELL" != "/usr/bin/zsh" ]; then
+    echo "Changing default shell to zsh..."
+    sudo chsh -s $(which zsh) $(whoami)
+fi
+
+echo "Dotfiles installation complete! Please restart your terminal or container."
